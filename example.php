@@ -13,5 +13,5 @@ $jol = new \slopjong\JOL();
 $val = $jol->encode($object);
 
 // should output
-//  {"string":"value","boolean":true,"integer":42,"array":[1,2,3],"object":{}}
+//  {string:'value',boolean:true,integer:42,array:[1,2,3],object:{}}
 print_r($val);

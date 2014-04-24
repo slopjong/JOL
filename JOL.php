@@ -57,6 +57,7 @@
  * @link        http://pear.php.net/pepr/pepr-proposal-show.php?id=198
  */
 
+// namespace is subject of a renaming
 namespace slopjong;
 
 
@@ -66,43 +67,31 @@ namespace slopjong;
  * Brief example of use:
  *
  * <code>
- * // create a new instance of Services_JSON
- * $json = new Services_JSON();
+ * // create a new instance of JOL converter.
+ * $jol = new \slopjong\JOL();
  *
- * // convert a complexe value to JSON notation, and send it to the browser
+ * // convert a complex value to JOL notation, and send it to the browser
  * $value = array('foo', 'bar', array(1, 2, 'baz'), array(3, array(4)));
- * $output = $json->encode($value);
+ * $output = $jol->encode($value);
  *
  * print($output);
- * // prints: ["foo","bar",[1,2,"baz"],[3,[4]]]
+ * // prints: ['foo','bar',[1,2,'baz'],[3,[4]]]
  *
- * // accept incoming POST data, assumed to be in JSON notation
- * $input = file_get_contents('php://input', 1000000);
- * $value = $json->decode($input);
  * </code>
  */
 class JOL
 {
-    const JOL_SLICE = 1;
-    const JOL_IN_STR = 2;
-    const JOL_IN_ARR = 3;
-    const JOL_IN_OBJ = 4;
-    const JOL_IN_CMT = 5;
-    const JOL_LOOSE_TYPE = 16;
     const JOL_SUPPRESS_ERRORS = 32;
 
     private $flags = 0;
 
    /**
-    * constructs a new JSON instance
+    * constructs a new JOL instance
     *
     * @param    int     $flags    object behavior flags; combine with boolean-OR
     *
     *                           possible values:
-    *                           - SERVICES_JSON_LOOSE_TYPE:  loose typing.
-    *                                   "{...}" syntax creates associative arrays
-    *                                   instead of objects in decode().
-    *                           - SERVICES_JSON_SUPPRESS_ERRORS:  error suppression.
+    *                           - JOL_SUPPRESS_ERRORS:  error suppression.
     *                                   Values which can't be encoded (e.g. resources)
     *                                   appear as NULL instead of throwing errors.
     *                                   By default, a deeply-nested resource will
@@ -159,14 +148,14 @@ class JOL
     }
 
    /**
-    * encodes an arbitrary variable into JSON format
+    * encodes an arbitrary variable into JOL format
     *
     * @param    mixed   $var    any number, boolean, string, array, or object to be encoded.
-    *                           see argument 1 to Services_JSON() above for array-parsing behavior.
+    *                           see argument 1 to JOL() above for array-parsing behavior.
     *                           if var is a strng, note that encode() always expects it
     *                           to be in ASCII or UTF-8 format!
     *
-    * @return   mixed   JSON string representation of input var or an error if a problem occurs
+    * @return   mixed   JOL string representation of input var or an error if a problem occurs
     * @access   public
     */
     function encode($var)
@@ -288,7 +277,7 @@ class JOL
                     }
                 }
 
-                return '"'.$ascii.'"';
+                return "'$ascii'";
 
             case 'array':
                /*
@@ -353,17 +342,17 @@ class JOL
             default:
                 return ($this->flags & self::JOL_SUPPRESS_ERRORS)
                     ? 'null'
-                    : new \Exception(gettype($var)." can not be encoded as JSON string");
+                    : new \Exception(gettype($var)." can not be encoded as JOL string");
         }
     }
 
    /**
-    * array-walking function for use in generating JSON-formatted name-value pairs
+    * array-walking function for use in generating JOL-formatted name-value pairs
     *
     * @param    string  $name   name of key to use
     * @param    mixed   $value  reference to an array element to be encoded
     *
-    * @return   string  JSON-formatted name-value pair, like '"name":value'
+    * @return   string  JOL-formatted name-value pair
     * @access   private
     */
     private function name_value($name, $value)
@@ -374,7 +363,7 @@ class JOL
             return $encoded_value;
         }
 
-        return $this->encode(strval($name)) . ':' . $encoded_value;
+        return strval($name) . ':' . $encoded_value;
     }
 
     private function isError($data)
