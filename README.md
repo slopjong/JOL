@@ -30,8 +30,6 @@ The above code snippet should produce the following output.
 {string:'\"String example with\" \'quotes\'',boolean:true,integer:42,array:[1,2,3],object:{}}
 ```
 
-This can now safely be used with HTML element
-
 Javascript object literals can then safely be used in attributes of HTML elements as this example shows: `<html-element data-jol="{...}" />`
 
 License
