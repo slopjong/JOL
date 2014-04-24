@@ -1,0 +1,14 @@
+{
+  "name": "slopjong/jol",
+  "description": "Javascript Object Literal Converter",
+  "minimum-stability": "stable",
+  "license": "BSD",
+  "authors": [
+    {
+      "name": "Romain Schmitz"
+    }
+  ],
+  "require": {
+    "eher/phpunit": "dev-composer"
+  }
+}
