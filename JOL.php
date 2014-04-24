@@ -205,10 +205,16 @@ class JOL
                             break;
 
                         case $ord_var_c == 0x22:
+                            // use unicode for the double quote,otherwise
+                            // browsers will complain strings with double
+                            // quotes contained.
+                            $ascii .= '\u0022';
+                            break;
+
                         case $ord_var_c == 0x27:
                         case $ord_var_c == 0x2F:
                         case $ord_var_c == 0x5C:
-                            // double quote, quote, slash, backslash
+                            // quote, slash, backslash
                             $ascii .= '\\'.$var{$c};
                             break;
 
