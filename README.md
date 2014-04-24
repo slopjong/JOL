@@ -32,6 +32,7 @@ The above code snippet should produce the following output.
 
 This can now safely be used with HTML element
 
+Javascript object literals can then safely be used in attributes of HTML elements as this example shows: `<html-element data-jol="{...}" />`
 
 License
 -------
