@@ -1,13 +1,3 @@
-Javascript Object Literal Converter
-===
-
-JOL converts a data structure to a javascript object literal which looks similar to JSON. Though both are not the same.
-
-The code base is taken from [PEAR](http://pear.php.net/pepr/pepr-proposal-show.php?id=198).
-
-License
--------
-
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
