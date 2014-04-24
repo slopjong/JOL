@@ -5,6 +5,34 @@ JOL converts a data structure to a javascript object literal which looks similar
 
 The code base is taken from [PEAR](http://pear.php.net/pepr/pepr-proposal-show.php?id=198).
 
+Usage
+-----
+
+```
+$string_with_quotes = "'quotes'";
+
+$object = new \stdClass();
+$object->string = '"String example with" ' . $string_with_quotes;
+$object->boolean = true;
+$object->integer = 42;
+$object->array = array(1, 2, 3);
+$object->object = new \stdClass();
+
+$jol = new JOL();
+$val = $jol->encode($object);
+
+print_r($val);
+```
+
+The above code snippet should produce the following output.
+
+```
+{string:'\"String example with\" \'quotes\'',boolean:true,integer:42,array:[1,2,3],object:{}}
+```
+
+This can now safely be used with HTML element
+
+
 License
 -------
 

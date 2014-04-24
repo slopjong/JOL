@@ -205,9 +205,10 @@ class JOL
                             break;
 
                         case $ord_var_c == 0x22:
+                        case $ord_var_c == 0x27:
                         case $ord_var_c == 0x2F:
                         case $ord_var_c == 0x5C:
-                            // double quote, slash, slosh
+                            // double quote, quote, slash, backslash
                             $ascii .= '\\'.$var{$c};
                             break;
 
