@@ -183,6 +183,10 @@ class JOL
                 * Iterate over every character in the string,
                 * escaping with a slash or encoding to UTF-8 where necessary
                 */
+                // @todo: we possibly need to escape more characters
+                //        see full thread http://stackoverflow.com/q/7322682
+                // @todo: make escaping optional so that the JOL could be
+                //        pasted to an IDE directly
                 for ($c = 0; $c < $strlen_var; ++$c) {
 
                     $ord_var_c = ord($var{$c});
