@@ -1,6 +1,6 @@
 <?php
 
-include('JOL.php');
+include('../Slopjong/JOL.php');
 
 $string_with_quotes = "'quotes'";
 
@@ -11,7 +11,7 @@ $object->integer = 42;
 $object->array = array(1, 2, 3);
 $object->object = new \stdClass();
 
-$jol = new \slopjong\JOL();
+$jol = new \Slopjong\JOL();
 $val = $jol->encode($object);
 
 // should output

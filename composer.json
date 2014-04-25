@@ -10,5 +10,8 @@
   ],
   "require-dev": {
     "eher/phpunit": "dev-composer"
+  },
+  "autoload": {
+    "psr-0": { "Slopjong\\": "src/" }
   }
 }
