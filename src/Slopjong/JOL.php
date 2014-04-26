@@ -58,7 +58,7 @@
  */
 
 // namespace is subject of a renaming
-namespace slopjong;
+namespace Slopjong;
 
 
 /**
